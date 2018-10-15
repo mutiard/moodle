@@ -41,7 +41,7 @@ $CFG = new stdClass();
 $CFG->dbtype    = 'mariadb';      // 'pgsql', 'mariadb', 'mysqli', 'mssql', 'sqlsrv' or 'oci'
 $CFG->dblibrary = 'native';     // 'native' only at the moment
 $CFG->dbhost    = 'localhost';  // eg 'localhost' or 'db.isp.com' or IP
-$CFG->dbname    = 'moodle';     // database name, eg moodle
+$CFG->dbname    = 'moodle-3.3.8';     // database name, eg moodle
 $CFG->dbuser    = 'root';   // your database username
 $CFG->dbpass    = '';   // your database password
 $CFG->prefix    = 'mdl_';       // prefix to use for all table names
@@ -100,7 +100,7 @@ $CFG->wwwroot   = 'http://www.moodletest.com';
 //
 // - On Windows systems you might specify something like 'c:\moodledata'
 
-$CFG->dataroot  = 'C:\xampp\htdocs\moodle-3.3.8\moodledata';
+$CFG->dataroot  = 'C:\xampp\htdocs\moodle\moodledata';
 
 
 //=========================================================================
