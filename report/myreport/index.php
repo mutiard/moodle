@@ -1,8 +1,9 @@
 <?php
-
+include('../../vendor/autoload.php');
 require_once('../../config.php');
 global $PAGE, $COURSE, $USER, $OUTPUT, $remotedb, $CFG;
 require($CFG->dirroot . '/report/myreport/index_form.php');
+use NlpTools\Tokenizers\WhitespaceAndPunctuationTokenizer;
 
 // Get the system context.
 $systemcontext = get_system_context();
@@ -56,10 +57,16 @@ echo $OUTPUT->heading($strtitle);
 
 // echo "Hello World!!!";
 $mform->display();
+// TES TOKEN
+$text = "Please allow me";
+$tok = new WhitespaceAndPunctuationTokenizer();
+print_r($tok->tokenize($text));
 
 // Output the table if it contain the data
 if(!empty($table->data)) {
 	echo html_writer::table($table);
 }
+
+
 
 echo $OUTPUT->footer();
