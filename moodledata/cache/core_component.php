@@ -340,6 +340,7 @@ $cache = array (
       'eventlist' => 'C:\\xampp\\htdocs\\moodle/report/eventlist',
       'log' => 'C:\\xampp\\htdocs\\moodle/report/log',
       'loglive' => 'C:\\xampp\\htdocs\\moodle/report/loglive',
+      'meaningfullearning' => 'C:\\xampp\\htdocs\\moodle/report/meaningfullearning',
       'myreport' => 'C:\\xampp\\htdocs\\moodle/report/myreport',
       'outline' => 'C:\\xampp\\htdocs\\moodle/report/outline',
       'participation' => 'C:\\xampp\\htdocs\\moodle/report/participation',
@@ -3897,5 +3898,5 @@ $cache = array (
       ),
     ),
   ),
-  'version' => 2017051508,
+  'version' => 2017051508.0,
 );
