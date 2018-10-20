@@ -1,0 +1,7 @@
+s:479:"<p>When a participant is subscribed to a forum it means they will receive forum post notifications. There are 4 subscription mode options:</p>
+
+<ul><li>Optional subscription - Participants can choose whether to be subscribed</li>
+<li>Forced subscription - Everyone is subscribed and cannot unsubscribe</li>
+<li>Auto subscription - Everyone is subscribed initially but can choose to unsubscribe at any time</li>
+<li>Subscription disabled - Subscriptions are not allowed</li>
+</ul>";
