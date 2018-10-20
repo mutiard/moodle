@@ -1,0 +1,11 @@
+a:2:{s:4:"data";s:665:"/** Path: plugin tool_dataprivacy .' **/
+.nav-pills .nav-pills {margin-left: 1rem;}
+.data-registry > .top-nav > * {margin-right: .5rem;}
+.data-registry > .top-nav > .singlebutton, .data-registry > .top-nav > .moodle-actionmenu[data-owner='dataregistry-actions'] {display: inline-block;}
+.data-registry .context-tree {height: 70vh;overflow-y: scroll;}
+dd a.contactdpo {margin-left: -10px;}
+.card dd a.contactdpo {margin-left: inherit;}
+#page-admin-tool-dataprivacy-datarequests [data-region="data-requests-table"] .no-overflow {overflow: inherit;}
+#page-admin-tool-dataprivacy-datarequests [data-region="data-requests-table"] .moodle-actionmenu {min-width: 150px;}
+
+";s:7:"created";i:1539750521;}

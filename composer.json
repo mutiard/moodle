@@ -9,6 +9,10 @@
         "phpunit/dbUnit": "1.4.*",
         "moodlehq/behat-extension": "3.33.2",
         "mikey179/vfsStream": "^1.6",
+<<<<<<< HEAD
+		"nlp-tools/nlp-tools": "1.0.*@dev"
+=======
         "nlp-tools/nlp-tools": "1.0.*@dev"
+>>>>>>> f643ac11df4fa88e4ab7aa78e9d5426b074679c9
     }
 }

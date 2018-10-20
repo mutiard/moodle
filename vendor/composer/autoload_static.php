@@ -4,7 +4,15 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInit6bc6c6b026d3f63490e5f9117ed35791
+=======
+<<<<<<< HEAD
+class ComposerStaticInit4da545987f33754218fc9d375a42260b
+=======
+class ComposerStaticInit0e13260109649de14dd937db88488a6f
+>>>>>>> f643ac11df4fa88e4ab7aa78e9d5426b074679c9
+>>>>>>> d5cee9c91a9099a559209942e3485796a3f640b1
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -812,10 +820,24 @@ class ComposerStaticInit6bc6c6b026d3f63490e5f9117ed35791
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit6bc6c6b026d3f63490e5f9117ed35791::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit6bc6c6b026d3f63490e5f9117ed35791::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit6bc6c6b026d3f63490e5f9117ed35791::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit6bc6c6b026d3f63490e5f9117ed35791::$classMap;
+=======
+<<<<<<< HEAD
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4da545987f33754218fc9d375a42260b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4da545987f33754218fc9d375a42260b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit4da545987f33754218fc9d375a42260b::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit4da545987f33754218fc9d375a42260b::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0e13260109649de14dd937db88488a6f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0e13260109649de14dd937db88488a6f::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0e13260109649de14dd937db88488a6f::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit0e13260109649de14dd937db88488a6f::$classMap;
+>>>>>>> f643ac11df4fa88e4ab7aa78e9d5426b074679c9
+>>>>>>> d5cee9c91a9099a559209942e3485796a3f640b1
 
         }, null, ClassLoader::class);
     }

@@ -15,5 +15,8 @@ $string['exportscv'] = 'Export as CSV';
 $string['name'] = 'name';
 $string['nocourse'] = 'No course available';
 $string['title'] = 'My Report';
+$string['submit'] = 'Submit';
+$string['choosecourse'] = 'Pilih Course';
+$string['subtitle'] = 'Meaningful Learning';
 
 

@@ -11,9 +11,9 @@ class myreport_form extends moodleform {
 		$options = array();
 		$options[0] = get_string('choose');
 		$options += $this->_customdata['courses'];
-		$mform->addElement('select','course', get_string('course'), $options, 'align="center"');
+		$mform->addElement('select','course', get_string('choosecourse'), $options, 'align="center"');
 		$mform->setType('course', PARAM_ALPHANUMEXT);
-		$mform->addElement('submit', 'save', get_string('display'), 'align="right"');
+		$mform->addElement('submit', 'save', get_string('submit'), 'align="right"');
 	}
 
 	public function validation($data, $files) {
