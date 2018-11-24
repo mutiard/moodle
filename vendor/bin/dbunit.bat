@@ -1,4 +1,4 @@
 @ECHO OFF
 setlocal DISABLEDELAYEDEXPANSION
-SET BIN_TARGET=%~dp0/../phpunit/dbunit/composer/bin/dbunit
+SET BIN_TARGET=%~dp0/../phpunit/dbunit/dbunit
 php "%BIN_TARGET%" %*

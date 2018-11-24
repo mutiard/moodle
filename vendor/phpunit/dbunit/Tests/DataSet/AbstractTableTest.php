@@ -21,20 +21,20 @@ class Extensions_Database_DataSet_AbstractTableTest extends PHPUnit_Framework_Te
     public function setUp()
     {
         $tableMetaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
-            'table', array('id', 'column1')
+            'table', ['id', 'column1']
         );
 
         $this->table = new PHPUnit_Extensions_Database_DataSet_DefaultTable($tableMetaData);
 
-        $this->table->addRow(array(
-            'id' => 1,
+        $this->table->addRow([
+            'id'      => 1,
             'column1' => 'randomValue'
-        ));
+        ]);
     }
 
     /**
      * @param array $row
-     * @param boolean $exists
+     * @param bool  $exists
      * @dataProvider providerTableContainsRow
      */
     public function testTableContainsRow($row, $exists)
@@ -45,10 +45,10 @@ class Extensions_Database_DataSet_AbstractTableTest extends PHPUnit_Framework_Te
 
     public function providerTableContainsRow()
     {
-        return array(
-            array(array('id' => 1, 'column1' => 'randomValue'), true),
-            array(array('id' => 1, 'column1' => 'notExistingValue'), false)
-        );
+        return [
+            [['id' => 1, 'column1' => 'randomValue'], true],
+            [['id' => 1, 'column1' => 'notExistingValue'], false]
+        ];
     }
 
     public function testMatchesWithNonMatchingMetaData()
@@ -88,7 +88,7 @@ class Extensions_Database_DataSet_AbstractTableTest extends PHPUnit_Framework_Te
             ->with($otherMetaData)
             ->will($this->returnValue(true));
 
-        $table = $this->getMock('PHPUnit_Extensions_Database_DataSet_DefaultTable', array('getRowCount'), array($tableMetaData));
+        $table = $this->getMock('PHPUnit_Extensions_Database_DataSet_DefaultTable', ['getRowCount'], [$tableMetaData]);
         $table->expects($this->once())
             ->method('getRowCount')
             ->will($this->returnValue(1));
@@ -98,7 +98,7 @@ class Extensions_Database_DataSet_AbstractTableTest extends PHPUnit_Framework_Te
     /**
      * @param array $tableColumnValues
      * @param array $otherColumnValues
-     * @param boolean $matches
+     * @param bool  $matches
      * @dataProvider providerMatchesWithColumnValueComparisons
      */
     public function testMatchesWithColumnValueComparisons($tableColumnValues, $otherColumnValues, $matches)
@@ -122,17 +122,17 @@ class Extensions_Database_DataSet_AbstractTableTest extends PHPUnit_Framework_Te
             ->with($otherMetaData)
             ->will($this->returnValue(true));
 
-        $table = $this->getMock('PHPUnit_Extensions_Database_DataSet_DefaultTable', array('getRowCount', 'getValue'), array($tableMetaData));
+        $table = $this->getMock('PHPUnit_Extensions_Database_DataSet_DefaultTable', ['getRowCount', 'getValue'], [$tableMetaData]);
         $table->expects($this->any())
             ->method('getRowCount')
             ->will($this->returnValue(count($tableColumnValues)));
 
-        $tableMap = array();
-        $otherMap = array();
+        $tableMap = [];
+        $otherMap = [];
         foreach ($tableColumnValues as $rowIndex => $rowData) {
             foreach ($rowData as $columnName => $columnValue) {
-                $tableMap[] = array($rowIndex, $columnName, $columnValue);
-                $otherMap[] = array($rowIndex, $columnName, $otherColumnValues[$rowIndex][$columnName]);
+                $tableMap[] = [$rowIndex, $columnName, $columnValue];
+                $otherMap[] = [$rowIndex, $columnName, $otherColumnValues[$rowIndex][$columnName]];
             }
         }
         $table->expects($this->any())
@@ -147,148 +147,148 @@ class Extensions_Database_DataSet_AbstractTableTest extends PHPUnit_Framework_Te
 
     public function providerMatchesWithColumnValueComparisons()
     {
-        return array(
+        return [
 
             // One row, one column, matches
-            array(
-                array(
-                    array('id' => 1),
-                ),
-                array(
-                    array('id' => 1),
-                ),
+            [
+                [
+                    ['id' => 1],
+                ],
+                [
+                    ['id' => 1],
+                ],
                 true,
-            ),
+            ],
 
             // One row, one column, does not match
-            array(
-                array(
-                    array('id' => 1),
-                ),
-                array(
-                    array('id' => 2),
-                ),
+            [
+                [
+                    ['id' => 1],
+                ],
+                [
+                    ['id' => 2],
+                ],
                 false,
-            ),
+            ],
 
             // Multiple rows, one column, matches
-            array(
-                array(
-                    array('id' => 1),
-                    array('id' => 2),
-                ),
-                array(
-                    array('id' => 1),
-                    array('id' => 2),
-                ),
+            [
+                [
+                    ['id' => 1],
+                    ['id' => 2],
+                ],
+                [
+                    ['id' => 1],
+                    ['id' => 2],
+                ],
                 true,
-            ),
+            ],
 
             // Multiple rows, one column, do not match
-            array(
-                array(
-                    array('id' => 1),
-                    array('id' => 2),
-                ),
-                array(
-                    array('id' => 1),
-                    array('id' => 3),
-                ),
+            [
+                [
+                    ['id' => 1],
+                    ['id' => 2],
+                ],
+                [
+                    ['id' => 1],
+                    ['id' => 3],
+                ],
                 false,
-            ),
+            ],
 
             // Multiple rows, multiple columns, matches
-            array(
-                array(
-                    array('id' => 1, 'name' => 'foo'),
-                    array('id' => 2, 'name' => 'bar'),
-                ),
-                array(
-                    array('id' => 1, 'name' => 'foo'),
-                    array('id' => 2, 'name' => 'bar'),
-                ),
+            [
+                [
+                    ['id' => 1, 'name' => 'foo'],
+                    ['id' => 2, 'name' => 'bar'],
+                ],
+                [
+                    ['id' => 1, 'name' => 'foo'],
+                    ['id' => 2, 'name' => 'bar'],
+                ],
                 true,
-            ),
+            ],
 
             // Multiple rows, multiple columns, do not match
-            array(
-                array(
-                    array('id' => 1, 'name' => 'foo'),
-                    array('id' => 2, 'name' => 'bar'),
-                ),
-                array(
-                    array('id' => 1, 'name' => 'foo'),
-                    array('id' => 2, 'name' => 'baz'),
-                ),
+            [
+                [
+                    ['id' => 1, 'name' => 'foo'],
+                    ['id' => 2, 'name' => 'bar'],
+                ],
+                [
+                    ['id' => 1, 'name' => 'foo'],
+                    ['id' => 2, 'name' => 'baz'],
+                ],
                 false,
-            ),
+            ],
 
             // Int and int as string must match
-            array(
-                array(
-                    array('id' => 42),
-                ),
-                array(
-                    array('id' => '42'),
-                ),
+            [
+                [
+                    ['id' => 42],
+                ],
+                [
+                    ['id' => '42'],
+                ],
                 true,
-            ),
+            ],
 
             // Float and float as string must match
-            array(
-                array(
-                    array('id' => 15.3),
-                ),
-                array(
-                    array('id' => '15.3'),
-                ),
+            [
+                [
+                    ['id' => 15.3],
+                ],
+                [
+                    ['id' => '15.3'],
+                ],
                 true,
-            ),
+            ],
 
             // Int and float must match
-            array(
-                array(
-                    array('id' => 18.00),
-                ),
-                array(
-                    array('id' => 18),
-                ),
+            [
+                [
+                    ['id' => 18.00],
+                ],
+                [
+                    ['id' => 18],
+                ],
                 true,
-            ),
+            ],
 
             // 0 and empty string must not match
-            array(
-                array(
-                    array('id' => 0),
-                ),
-                array(
-                    array('id' => ''),
-                ),
+            [
+                [
+                    ['id' => 0],
+                ],
+                [
+                    ['id' => ''],
+                ],
                 false,
-            ),
+            ],
 
             // 0 and null must not match
-            array(
-                array(
-                    array('id' => 0),
-                ),
-                array(
-                    array('id' => null),
-                ),
+            [
+                [
+                    ['id' => 0],
+                ],
+                [
+                    ['id' => null],
+                ],
                 false,
-            ),
+            ],
 
             // empty string and null must not match
-            array(
-                array(
-                    array('id' => ''),
-                ),
-                array(
-                    array('id' => null),
-                ),
+            [
+                [
+                    ['id' => ''],
+                ],
+                [
+                    ['id' => null],
+                ],
                 false,
-            ),
-        );
+            ],
+        ];
     }
 
 }
