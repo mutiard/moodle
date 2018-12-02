@@ -23,4 +23,4 @@ input[size].atto_media_url_entry {width: calc(100% - 15px);}
 .defaultlabel {width: 14%;}
 [data-medium-type=link] label {width: 100%;}
 
-";s:7:"created";i:1543063811;}
+";s:7:"created";i:1543771744;}

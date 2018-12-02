@@ -96,14 +96,10 @@ if(!empty($table->data)) {
 	echo html_writer::table($table);
 }
 
-<<<<<<< HEAD
 if(!empty($table2->data)) {
 	echo html_writer::table($table2);
 }
 
 echo $OUTPUT->render($chart);
-=======
-
->>>>>>> f643ac11df4fa88e4ab7aa78e9d5426b074679c9
 
 echo $OUTPUT->footer();

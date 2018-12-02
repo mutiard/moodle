@@ -79,7 +79,7 @@ function xmldb_myreport_upgrade($oldversion) {
         $table4->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
         $table4->add_field('id_aktivitas_aksi', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
         $table4->add_field('id_aspek', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
-        $table4->add_field('bobot', XMLDB_TYPE_NUMBER, '5, 4', null, null, null, null);
+        $table4->add_field('bobot', XMLDB_TYPE_NUMBER, '6, 5', null, null, null, null);
 
         // Adding keys to table bobot.
         $table4->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="report/myreport/db" VERSION="20181124" COMMENT="XMLDB file for Moodle report/myreport"
+<XMLDB PATH="report/myreport/db" VERSION="20181202" COMMENT="XMLDB file for Moodle report/myreport"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -48,7 +48,7 @@
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="id_aktivitas_aksi" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
         <FIELD NAME="id_aspek" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="bobot" TYPE="number" LENGTH="5" NOTNULL="false" SEQUENCE="false" DECIMALS="4"/>
+        <FIELD NAME="bobot" TYPE="number" LENGTH="7" NOTNULL="false" SEQUENCE="false" DECIMALS="6"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
