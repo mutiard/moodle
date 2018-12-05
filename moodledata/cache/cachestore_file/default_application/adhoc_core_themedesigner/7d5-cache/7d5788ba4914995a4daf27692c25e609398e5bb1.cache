@@ -260,4 +260,4 @@ video::-webkit-media-text-track-display {-moz-transform: translateY(-3em);-ms-tr
 .video-js .vjs-volume-level {left: 0;right: auto;}
 .vjs-slider-horizontal .vjs-volume-level:before {left: auto;right: -.5em;}
 
-";s:7:"created";i:1543771814;}
+";s:7:"created";i:1543817921;}
