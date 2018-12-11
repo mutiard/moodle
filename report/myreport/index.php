@@ -88,6 +88,12 @@ echo $OUTPUT->heading($strtitle);
 // echo "Hello World!!!";
 $mform->display();
 
+// $sql = "SELECT intro from mdlnr_forum where course = 2";
+// $intro = $DB->get_records_sql($sql);
+// foreach($intro as $listintro){
+// 	print_r($listintro->intro);
+// }
+
 // TES TOKEN & COSINE SIMILARITY
 $text1 = 'Menurut kalian, hal-hal apa saja yang mendasari pentingnya pembuatan diagram sequence? Lalu apa saja keterkaitan antara diagram sequence dan diagram class? Jelaskan secara singkat dan jelas!';
 $text2 = 'Diagram sequence menjelaskan bagaimana alur use case atau kasus aplikasi itu beroperasi, ini akan mempermudah developer untuk membangun aplikasi tersebut. Dalam diagram sequence, terdapat banyak kelas yang terhubung satu sama lain yang menentukan alur use case, kelas-kelas tersebut diperoleh dari diagram kelas. Selain itu, semua message atau input dari pengguna akan langsung menuju ke kelas bertipe boundary.';

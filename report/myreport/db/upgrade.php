@@ -91,60 +91,64 @@ function xmldb_myreport_upgrade($oldversion) {
             $dbman->create_table($table4);
         }
 
-        // Define table waktu to be created.
-        $table5 = new xmldb_table('waktu');
+        // Define table log_aksi to be created.
+        $table5 = new xmldb_table('log_aksi');
 
-        // Adding fields to table waktu.
+        // Adding fields to table log_aksi.
         $table5->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
-        $table5->add_field('waktu', XMLDB_TYPE_CHAR, '10', null, null, null, null);
+        $table5->add_field('id_course_completions', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table5->add_field('id_log', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table5->add_field('nilai', XMLDB_TYPE_NUMBER, '6, 3', null, null, null, null);
+        $table5->add_field('id_bobot', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
 
-        // Adding keys to table waktu.
+        // Adding keys to table log_aksi.
         $table5->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+        $table5->add_key('mdlnr_logaksi_courcomlog_uix', XMLDB_KEY_UNIQUE, array('id_course_completions', 'id_log'));
+        $table5->add_key('id_bobot', XMLDB_KEY_FOREIGN, array('id_bobot'), 'bobot', array('id'));
 
-        // Conditionally launch create table for waktu.
+        // Adding indexes to table log_aksi.
+        $table5->add_index('mdlnr_logaksi_courcom_ix', XMLDB_INDEX_NOTUNIQUE, array('id_course_completions'));
+        $table5->add_index('mdlnr_logaksi_log_ix', XMLDB_INDEX_NOTUNIQUE, array('id_log'));
+
+        // Conditionally launch create table for log_aksi.
         if (!$dbman->table_exists($table5)) {
             $dbman->create_table($table5);
         }
 
-        // Define table log_aksi to be created.
-        $table6 = new xmldb_table('log_aksi');
+        $table6 = new xmldb_table('nilai_akhir');
 
-        // Adding fields to table log_aksi.
+        // Adding fields to table nilai_akhir.
         $table6->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table6->add_field('id_aspek', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
         $table6->add_field('id_course_completions', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
-        $table6->add_field('id_aktivitas_aksi', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
-        $table6->add_field('id_waktu', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
-        $table6->add_field('id_log', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
-        $table6->add_field('nilai', XMLDB_TYPE_NUMBER, '6, 3', null, null, null, null);
+        $table6->add_field('nilai_akhir', XMLDB_TYPE_NUMBER, '6, 3', null, null, null, null);
+        $table6->add_field('level', XMLDB_TYPE_TEXT, null, null, null, null, null);
 
-        // Adding keys to table log_aksi.
+        // Adding keys to table nilai_akhir.
         $table6->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
-        $table6->add_key('id_aktivitas_aksi', XMLDB_KEY_FOREIGN, array('id_aktivitas_aksi'), 'aktivitas_aksi', array('id'));
-        $table6->add_key('id_waktu', XMLDB_KEY_FOREIGN, array('id_waktu'), 'waktu', array('id'));
-        $table6->add_key('mdlnr_logaksi_courcomlog_uix', XMLDB_KEY_UNIQUE, array('id_course_completions', 'id_log'));
+        $table6->add_key('id_aspek', XMLDB_KEY_FOREIGN, array('id_aspek'), 'aspek', array('id'));
+        $table6->add_key('mdlnr_nilaiakhir_courcom_uix', XMLDB_KEY_UNIQUE, array('id_course_completions'));
 
-        // Adding indexes to table log_aksi.
-        $table6->add_index('mdlnr_logaksi_courcom_ix', XMLDB_INDEX_NOTUNIQUE, array('id_course_completions'));
-        $table6->add_index('mdlnr_logaksi_log_ix', XMLDB_INDEX_NOTUNIQUE, array('id_log'));
-
-        // Conditionally launch create table for log_aksi.
+        // Conditionally launch create table for nilai_akhir.
         if (!$dbman->table_exists($table6)) {
             $dbman->create_table($table6);
         }
 
-        $table7 = new xmldb_table('nilai_akhir');
+        // Define table frekuensi to be created.
+        $table7 = new xmldb_table('frekuensi');
 
-        // Adding fields to table nilai_akhir.
+        // Adding fields to table frekuensi.
         $table7->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
-        $table7->add_field('id_log_aksi', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
-        $table7->add_field('id_waktu', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table7->add_field('id_aktivitas_aksi', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table7->add_field('id_course_completions', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table7->add_field('frekuensi', XMLDB_TYPE_NUMBER, '4, 3', null, null, null, null);
 
-        // Adding keys to table nilai_akhir.
+        // Adding keys to table frekuensi.
         $table7->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
-        $table7->add_key('id_log_aksi', XMLDB_KEY_FOREIGN, array('id_log_aksi'), 'log_aksi', array('id'));
-        $table7->add_key('id_waktu', XMLDB_KEY_FOREIGN, array('id_waktu'), 'waktu', array('id'));
+        $table7->add_key('id_aktivitas_aksi', XMLDB_KEY_FOREIGN, array('id_aktivitas_aksi'), 'aktivitas_aksi', array('id'));
+        $table7->add_key('mdlnr_frekuensi_courcom_uix', XMLDB_KEY_UNIQUE, array('id_course_completions'));
 
-        // Conditionally launch create table for nilai_akhir.
+        // Conditionally launch create table for frekuensi.
         if (!$dbman->table_exists($table7)) {
             $dbman->create_table($table7);
         }
