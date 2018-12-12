@@ -1,3 +1,0 @@
-onload=function(){disablePopupHeads()}
-function disablePopupHeads(){var popup=document.getElementById("menucommand");var i=popup.length;while(i--){option=popup[i];if(option.value=="Fields"||option.value=="Keys"||option.value=="Indexes"){popup[i].disabled=!0}}
-popup=document.getElementById("menufieldkeyindex");i=popup.length;while(i--){option=popup[i];if(option.value=="fieldshead"||option.value=="keyshead"||option.value=="indexeshead"){popup[i].disabled=!0}}}
