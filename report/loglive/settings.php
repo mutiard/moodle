@@ -32,3 +32,7 @@ $ADMIN->add('reports', new admin_externalpage('reportloglive', get_string('plugi
 
 // No report settings.
 $settings = null;
+
+$previewnode = $PAGE->navigation->add(get_string('preview'), new moodle_url('/report/loglive/index.php'), navigation_node::TYPE_CONTAINER);
+$thingnode = $previewnode->add(get_string('Machine Learning'), new moodle_url('/a/link/if/you/want/one.phpreport/loglive/index.php'));
+$thingnode->make_active();

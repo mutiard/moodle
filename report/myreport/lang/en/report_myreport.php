@@ -1,8 +1,8 @@
 <?php
 
 
-$string['pluginname'] = 'My Report';
-$string['myreport'] = 'My Report';
+$string['pluginname'] = 'Meaningful Learning';
+$string['myreport'] = 'Meaningful Learning';
 $string['myreport:view'] = 'View My Report';
 $string['agency'] = 'Agency';
 $string['currentdate'] = 'Current date';
@@ -14,7 +14,7 @@ $string['error_molasaccessdate'] = 'Please enter last report';
 $string['exportscv'] = 'Export as CSV';
 $string['name'] = 'name';
 $string['nocourse'] = 'No course available';
-$string['title'] = 'My Report';
+$string['title'] = 'Meaningful Learning';
 $string['submit'] = 'Submit';
 $string['choosecourse'] = 'Pilih Course';
 $string['subtitle'] = 'Meaningful Learning';
