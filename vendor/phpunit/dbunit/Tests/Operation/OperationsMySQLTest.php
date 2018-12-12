@@ -36,7 +36,7 @@ class Extensions_Database_Operation_OperationsMySQLTest extends PHPUnit_Extensio
 
     public function getDataSet()
     {
-        return new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__).'/../_files/XmlDataSets/OperationsMySQLTestFixture.xml');
+        return new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__) . '/../_files/XmlDataSets/OperationsMySQLTestFixture.xml');
     }
 
     /**
@@ -47,20 +47,20 @@ class Extensions_Database_Operation_OperationsMySQLTest extends PHPUnit_Extensio
         $truncateOperation = new PHPUnit_Extensions_Database_Operation_Truncate();
         $truncateOperation->execute($this->getConnection(), $this->getDataSet());
 
-        $expectedDataSet = new PHPUnit_Extensions_Database_DataSet_DefaultDataSet(array(
+        $expectedDataSet = new PHPUnit_Extensions_Database_DataSet_DefaultDataSet([
             new PHPUnit_Extensions_Database_DataSet_DefaultTable(
                 new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1',
-                    array('table1_id', 'column1', 'column2', 'column3', 'column4'))
+                    ['table1_id', 'column1', 'column2', 'column3', 'column4'])
             ),
             new PHPUnit_Extensions_Database_DataSet_DefaultTable(
                 new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table2',
-                    array('table2_id', 'table1_id', 'column5', 'column6', 'column7', 'column8'))
+                    ['table2_id', 'table1_id', 'column5', 'column6', 'column7', 'column8'])
             ),
             new PHPUnit_Extensions_Database_DataSet_DefaultTable(
                 new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table3',
-                    array('table3_id', 'table2_id', 'column9', 'column10', 'column11', 'column12'))
+                    ['table3_id', 'table2_id', 'column9', 'column10', 'column11', 'column12'])
             ),
-        ));
+        ]);
 
         $this->assertDataSetsEqual($expectedDataSet, $this->getConnection()->createDataSet());
     }
@@ -68,8 +68,8 @@ class Extensions_Database_Operation_OperationsMySQLTest extends PHPUnit_Extensio
     public function getCompositeDataSet()
     {
         $compositeDataset = new PHPUnit_Extensions_Database_DataSet_CompositeDataSet();
-        
-        $dataset = $this->createXMLDataSet(dirname(__FILE__).'/../_files/XmlDataSets/TruncateCompositeTest.xml');
+
+        $dataset = $this->createXMLDataSet(dirname(__FILE__) . '/../_files/XmlDataSets/TruncateCompositeTest.xml');
         $compositeDataset->addDataSet($dataset);
 
         return $compositeDataset;
@@ -80,20 +80,20 @@ class Extensions_Database_Operation_OperationsMySQLTest extends PHPUnit_Extensio
         $truncateOperation = new PHPUnit_Extensions_Database_Operation_Truncate();
         $truncateOperation->execute($this->getConnection(), $this->getCompositeDataSet());
 
-        $expectedDataSet = new PHPUnit_Extensions_Database_DataSet_DefaultDataSet(array(
+        $expectedDataSet = new PHPUnit_Extensions_Database_DataSet_DefaultDataSet([
             new PHPUnit_Extensions_Database_DataSet_DefaultTable(
                 new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1',
-                    array('table1_id', 'column1', 'column2', 'column3', 'column4'))
+                    ['table1_id', 'column1', 'column2', 'column3', 'column4'])
             ),
             new PHPUnit_Extensions_Database_DataSet_DefaultTable(
                 new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table2',
-                    array('table2_id', 'table1_id', 'column5', 'column6', 'column7', 'column8'))
+                    ['table2_id', 'table1_id', 'column5', 'column6', 'column7', 'column8'])
             ),
             new PHPUnit_Extensions_Database_DataSet_DefaultTable(
                 new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table3',
-                    array('table3_id', 'table2_id', 'column9', 'column10', 'column11', 'column12'))
+                    ['table3_id', 'table2_id', 'column9', 'column10', 'column11', 'column12'])
             ),
-        ));
+        ]);
 
         $this->assertDataSetsEqual($expectedDataSet, $this->getConnection()->createDataSet());
     }

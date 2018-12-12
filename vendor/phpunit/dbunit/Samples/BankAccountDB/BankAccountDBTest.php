@@ -19,7 +19,7 @@ abstract class BankAccountDBTest extends PHPUnit_Extensions_Database_TestCase
 {
     protected $pdo;
 
-    public function __construct($name = null, array $data = array(), $dataName = '')
+    public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
 
@@ -46,7 +46,7 @@ abstract class BankAccountDBTest extends PHPUnit_Extensions_Database_TestCase
 
     protected function getDataSet()
     {
-        return $this->createFlatXMLDataSet(dirname(__FILE__).'/_files/bank-account-seed.xml');
+        return $this->createFlatXMLDataSet(dirname(__FILE__) . '/_files/bank-account-seed.xml');
     }
 
     public function testNewAccountBalanceIsInitiallyZero()
@@ -81,7 +81,7 @@ abstract class BankAccountDBTest extends PHPUnit_Extensions_Database_TestCase
         $bank_account = new BankAccount('12348612357236185', $this->pdo);
         $bank_account->depositMoney(24);
 
-        $xml_dataset = $this->createFlatXMLDataSet(dirname(__FILE__).'/_files/bank-account-after-deposits.xml');
+        $xml_dataset = $this->createFlatXMLDataSet(dirname(__FILE__) . '/_files/bank-account-after-deposits.xml');
         $this->assertDataSetsEqual($xml_dataset, $this->getConnection()->createDataSet());
     }
 
@@ -96,7 +96,7 @@ abstract class BankAccountDBTest extends PHPUnit_Extensions_Database_TestCase
         $bank_account = new BankAccount('12348612357236185', $this->pdo);
         $bank_account->withdrawMoney(24);
 
-        $xml_dataset = $this->createFlatXMLDataSet(dirname(__FILE__).'/_files/bank-account-after-withdrawals.xml');
+        $xml_dataset = $this->createFlatXMLDataSet(dirname(__FILE__) . '/_files/bank-account-after-withdrawals.xml');
         $this->assertDataSetsEqual($xml_dataset, $this->getConnection()->createDataSet());
     }
 
@@ -104,7 +104,7 @@ abstract class BankAccountDBTest extends PHPUnit_Extensions_Database_TestCase
     {
         $bank_account = new BankAccount('12345678912345678', $this->pdo);
 
-        $xml_dataset = $this->createFlatXMLDataSet(dirname(__FILE__).'/_files/bank-account-after-new-account.xml');
+        $xml_dataset = $this->createFlatXMLDataSet(dirname(__FILE__) . '/_files/bank-account-after-new-account.xml');
         $this->assertDataSetsEqual($xml_dataset, $this->getConnection()->createDataSet());
     }
 }

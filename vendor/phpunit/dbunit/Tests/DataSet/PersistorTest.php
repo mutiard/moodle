@@ -15,8 +15,8 @@ class Extensions_Database_DataSet_PersistorTest extends PHPUnit_Framework_TestCa
 {
     public function testFlatXml()
     {
-        $dataSetFile = dirname(__FILE__).'/../_files/XmlDataSets/FlatXmlWriter.xml';
-        $filename    = dirname(__FILE__).'/'.uniqid().'.xml';
+        $dataSetFile = dirname(__FILE__) . '/../_files/XmlDataSets/FlatXmlWriter.xml';
+        $filename    = dirname(__FILE__) . '/' . uniqid() . '.xml';
         $dataSet     = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet($dataSetFile);
 
         PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet::write($dataSet, $filename);
@@ -26,8 +26,8 @@ class Extensions_Database_DataSet_PersistorTest extends PHPUnit_Framework_TestCa
 
     public function testXml()
     {
-        $dataSetFile = dirname(__FILE__).'/../_files/XmlDataSets/XmlWriter.xml';
-        $filename    = dirname(__FILE__).'/'.uniqid().'.xml';
+        $dataSetFile = dirname(__FILE__) . '/../_files/XmlDataSets/XmlWriter.xml';
+        $filename    = dirname(__FILE__) . '/' . uniqid() . '.xml';
         $dataSet     = new PHPUnit_Extensions_Database_DataSet_XmlDataSet($dataSetFile);
 
         PHPUnit_Extensions_Database_DataSet_XmlDataSet::write($dataSet, $filename);
@@ -37,13 +37,13 @@ class Extensions_Database_DataSet_PersistorTest extends PHPUnit_Framework_TestCa
 
     public function testEntitiesFlatXml()
     {
-        $metaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', array('col1', 'col2'), array('col1'));
+        $metaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', ['col1', 'col2'], ['col1']);
         $table    = new PHPUnit_Extensions_Database_DataSet_DefaultTable($metaData);
-        $table->addRow(array('col1' => 1, 'col2' => '<?xml version="1.0"?><myxml>test</myxml>'));
-        $dataSet  = new PHPUnit_Extensions_Database_DataSet_DefaultDataSet(array($table));
+        $table->addRow(['col1' => 1, 'col2' => '<?xml version="1.0"?><myxml>test</myxml>']);
+        $dataSet  = new PHPUnit_Extensions_Database_DataSet_DefaultDataSet([$table]);
 
-        $expectedFile = dirname(__FILE__).'/../_files/XmlDataSets/FlatXmlWriterEntities.xml';
-        $filename     = dirname(__FILE__).'/'.uniqid().'.xml';
+        $expectedFile = dirname(__FILE__) . '/../_files/XmlDataSets/FlatXmlWriterEntities.xml';
+        $filename     = dirname(__FILE__) . '/' . uniqid() . '.xml';
         PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet::write($dataSet, $filename);
         $this->assertXmlFileEqualsXmlFile($expectedFile, $filename);
         unlink($filename);
@@ -51,13 +51,13 @@ class Extensions_Database_DataSet_PersistorTest extends PHPUnit_Framework_TestCa
 
     public function testEntitiesXml()
     {
-        $metaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', array('col1', 'col2'), array('col1'));
-        $table = new PHPUnit_Extensions_Database_DataSet_DefaultTable($metaData);
-        $table->addRow(array('col1' => 1, 'col2' => '<?xml version="1.0"?><myxml>test</myxml>'));
-        $dataSet = new PHPUnit_Extensions_Database_DataSet_DefaultDataSet(array($table));
+        $metaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', ['col1', 'col2'], ['col1']);
+        $table    = new PHPUnit_Extensions_Database_DataSet_DefaultTable($metaData);
+        $table->addRow(['col1' => 1, 'col2' => '<?xml version="1.0"?><myxml>test</myxml>']);
+        $dataSet = new PHPUnit_Extensions_Database_DataSet_DefaultDataSet([$table]);
 
-        $expectedFile = dirname(__FILE__).'/../_files/XmlDataSets/XmlWriterEntities.xml';
-        $filename = dirname(__FILE__).'/'.uniqid().'.xml';
+        $expectedFile = dirname(__FILE__) . '/../_files/XmlDataSets/XmlWriterEntities.xml';
+        $filename     = dirname(__FILE__) . '/' . uniqid() . '.xml';
         PHPUnit_Extensions_Database_DataSet_XmlDataSet::write($dataSet, $filename);
         $this->assertXmlFileEqualsXmlFile($expectedFile, $filename);
         unlink($filename);

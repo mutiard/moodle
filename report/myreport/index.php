@@ -4,6 +4,7 @@ require_once('../../config.php');
 global $PAGE, $COURSE, $USER, $OUTPUT, $remotedb, $CFG;
 require($CFG->dirroot . '/report/myreport/index_form.php');
 use NlpTools\Tokenizers\WhitespaceAndPunctuationTokenizer;
+use NlpTools\Similarity\CosineSimilarity;
 
 // Get the system context.
 $systemcontext = get_system_context();
@@ -104,9 +105,30 @@ $newtable = new html_table();
 // }
 echo $OUTPUT->header();
 
+<<<<<<< HEAD
 if(!empty($newtable->data)) {
 	echo html_writer::table($newtable);
 }	
+=======
+// echo "Hello World!!!";
+$mform->display();
+
+// $sql = "SELECT intro from mdlnr_forum where course = 2";
+// $intro = $DB->get_records_sql($sql);
+// foreach($intro as $listintro){
+// 	print_r($listintro->intro);
+// }
+
+// TES TOKEN & COSINE SIMILARITY
+$text1 = 'Menurut kalian, hal-hal apa saja yang mendasari pentingnya pembuatan diagram sequence? Lalu apa saja keterkaitan antara diagram sequence dan diagram class? Jelaskan secara singkat dan jelas!';
+$text2 = 'Diagram sequence menjelaskan bagaimana alur use case atau kasus aplikasi itu beroperasi, ini akan mempermudah developer untuk membangun aplikasi tersebut. Dalam diagram sequence, terdapat banyak kelas yang terhubung satu sama lain yang menentukan alur use case, kelas-kelas tersebut diperoleh dari diagram kelas. Selain itu, semua message atau input dari pengguna akan langsung menuju ke kelas bertipe boundary.';
+$tok = new WhitespaceAndPunctuationTokenizer();
+$cos = new CosineSimilarity();
+$setA = $tok->tokenize($text1);
+$setB = $tok->tokenize($text2);
+
+printf('Cosine: %.3f', $cos->similarity($setA, $setB));
+>>>>>>> 1971d39ebe109fd8649fd77a4df95858dceaa8ba
 
 if(!empty($table->data)) {
 	echo html_writer::table($table);
@@ -116,8 +138,12 @@ if(!empty($table2->data)) {
 	echo html_writer::table($table2);
 }
 
+<<<<<<< HEAD
 if (!empty($chart)) {
 	echo $OUTPUT->render($chart);
 }
+=======
+echo $OUTPUT->render($chart);
+>>>>>>> 1971d39ebe109fd8649fd77a4df95858dceaa8ba
 
 echo $OUTPUT->footer();

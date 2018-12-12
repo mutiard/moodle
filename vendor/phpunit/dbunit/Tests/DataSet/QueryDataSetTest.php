@@ -30,7 +30,7 @@ class Extensions_Database_DataSet_QueryDataSetTest extends PHPUnit_Extensions_Da
 
     protected function getDataSet()
     {
-        return $this->createFlatXMLDataSet(dirname(__FILE__).'/../_files/XmlDataSets/QueryDataSetTest.xml');
+        return $this->createFlatXMLDataSet(dirname(__FILE__) . '/../_files/XmlDataSets/QueryDataSetTest.xml');
     }
 
     public function setUp()
@@ -50,13 +50,13 @@ class Extensions_Database_DataSet_QueryDataSetTest extends PHPUnit_Extensions_Da
 
     public function testGetTable()
     {
-        $expectedTable1 = $this->getConnection()->createDataSet(array('table1'))->getTable('table1');
+        $expectedTable1 = $this->getConnection()->createDataSet(['table1'])->getTable('table1');
 
         $expectedTable2 = new PHPUnit_Extensions_Database_DataSet_DefaultTable(
-            new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('query1', array('tc1', 'tc2'))
+            new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('query1', ['tc1', 'tc2'])
         );
 
-        $expectedTable2->addRow(array('tc1' => 'bar', 'tc2' => 'blah'));
+        $expectedTable2->addRow(['tc1' => 'bar', 'tc2' => 'blah']);
 
         $this->assertTablesEqual($expectedTable1, $this->dataSet->getTable('table1'));
         $this->assertTablesEqual($expectedTable2, $this->dataSet->getTable('query1'));
@@ -64,18 +64,18 @@ class Extensions_Database_DataSet_QueryDataSetTest extends PHPUnit_Extensions_Da
 
     public function testGetTableNames()
     {
-        $this->assertEquals(array('table1', 'query1'), $this->dataSet->getTableNames());
+        $this->assertEquals(['table1', 'query1'], $this->dataSet->getTableNames());
     }
 
     public function testCreateIterator()
     {
-        $expectedTable1 = $this->getConnection()->createDataSet(array('table1'))->getTable('table1');
+        $expectedTable1 = $this->getConnection()->createDataSet(['table1'])->getTable('table1');
 
         $expectedTable2 = new PHPUnit_Extensions_Database_DataSet_DefaultTable(
-            new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('query1', array('tc1', 'tc2'))
+            new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('query1', ['tc1', 'tc2'])
         );
 
-        $expectedTable2->addRow(array('tc1' => 'bar', 'tc2' => 'blah'));
+        $expectedTable2->addRow(['tc1' => 'bar', 'tc2' => 'blah']);
 
         foreach ($this->dataSet as $i => $table) {
             /* @var $table PHPUnit_Extensions_Database_DataSet_ITable */

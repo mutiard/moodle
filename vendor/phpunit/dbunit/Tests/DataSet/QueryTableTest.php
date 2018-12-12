@@ -39,19 +39,19 @@ class Extensions_Database_DataSet_QueryTableTest extends PHPUnit_Framework_TestC
 
     public static function providerTestGetValue()
     {
-        return array(
-            array(0, 'col1', 'value1'),
-            array(0, 'col2', 'value2'),
-            array(0, 'col3', 'value3'),
-            array(1, 'col1', 'value4'),
-            array(1, 'col2', 'value5'),
-            array(1, 'col3', 'value6'),
-        );
+        return [
+            [0, 'col1', 'value1'],
+            [0, 'col2', 'value2'],
+            [0, 'col3', 'value3'],
+            [1, 'col1', 'value4'],
+            [1, 'col2', 'value5'],
+            [1, 'col3', 'value6'],
+        ];
     }
 
     public function testGetTableMetaData()
     {
-        $metaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', array('col1', 'col2', 'col3'));
+        $metaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', ['col1', 'col2', 'col3']);
 
         $this->assertEquals($metaData, $this->table->getTableMetaData());
     }
@@ -71,30 +71,30 @@ class Extensions_Database_DataSet_QueryTableTest extends PHPUnit_Framework_TestC
 
     public function testGetRow()
     {
-        $this->assertEquals(array('col1' => 'value1', 'col2' => 'value2', 'col3' => 'value3'), $this->table->getRow(0));
+        $this->assertEquals(['col1' => 'value1', 'col2' => 'value2', 'col3' => 'value3'], $this->table->getRow(0));
     }
 
     public function testAssertEquals()
     {
-        $expected_table = new PHPUnit_Extensions_Database_DataSet_DefaultTable(new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', array('col1', 'col2', 'col3')));
-        $expected_table->addRow(array('col1' => 'value1', 'col2' => 'value2', 'col3' => 'value3'));
-        $expected_table->addRow(array('col1' => 'value4', 'col2' => 'value5', 'col3' => 'value6'));
+        $expected_table = new PHPUnit_Extensions_Database_DataSet_DefaultTable(new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', ['col1', 'col2', 'col3']));
+        $expected_table->addRow(['col1' => 'value1', 'col2' => 'value2', 'col3' => 'value3']);
+        $expected_table->addRow(['col1' => 'value4', 'col2' => 'value5', 'col3' => 'value6']);
         $this->assertTrue($this->table->matches($expected_table));
     }
 
     public function testAssertEqualsFails()
     {
-        $expected_table = new PHPUnit_Extensions_Database_DataSet_DefaultTable(new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', array('col1', 'col2', 'col3')));
-        $expected_table->addRow(array('col1' => 'value1', 'col2' => 'value2', 'col3' => 'value3'));
-        $expected_table->addRow(array('col1' => 'value4', 'col2' => 'value5', 'col3' => 'value6'));
-        $expected_table->addRow(array('col1' => 'value7', 'col2' => 'value8', 'col3' => 'value9'));
+        $expected_table = new PHPUnit_Extensions_Database_DataSet_DefaultTable(new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData('table1', ['col1', 'col2', 'col3']));
+        $expected_table->addRow(['col1' => 'value1', 'col2' => 'value2', 'col3' => 'value3']);
+        $expected_table->addRow(['col1' => 'value4', 'col2' => 'value5', 'col3' => 'value6']);
+        $expected_table->addRow(['col1' => 'value7', 'col2' => 'value8', 'col3' => 'value9']);
         $this->assertFalse($this->table->matches($expected_table));
     }
 
     public function testAssertRowContains()
     {
         $this->assertTrue($this->table->assertContainsRow(
-            array('col1' => 'value1', 'col2' => 'value2', 'col3' => 'value3')
+            ['col1' => 'value1', 'col2' => 'value2', 'col3' => 'value3']
         ));
     }
 }

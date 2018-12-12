@@ -21,32 +21,32 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
     public function setUp()
     {
         $tableMetaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
-            'table1', array('table1_id', 'column1', 'column2', 'column3', 'column4')
+            'table1', ['table1_id', 'column1', 'column2', 'column3', 'column4']
         );
 
         $table = new PHPUnit_Extensions_Database_DataSet_DefaultTable($tableMetaData);
 
-        $table->addRow(array(
+        $table->addRow([
             'table1_id' => 1,
-            'column1' => 'My name is %%%name%%%',
-            'column2' => 200,
-            'column3' => 34.64,
-            'column4' => 'yghkf;a  hahfg8ja h;'
-        ));
-        $table->addRow(array(
+            'column1'   => 'My name is %%%name%%%',
+            'column2'   => 200,
+            'column3'   => 34.64,
+            'column4'   => 'yghkf;a  hahfg8ja h;'
+        ]);
+        $table->addRow([
             'table1_id' => 2,
-            'column1' => 'hk;afg',
-            'column2' => 654,
-            'column3' => 46.54,
-            'column4' => '24rwehhads'
-        ));
-        $table->addRow(array(
+            'column1'   => 'hk;afg',
+            'column2'   => 654,
+            'column3'   => 46.54,
+            'column4'   => '24rwehhads'
+        ]);
+        $table->addRow([
             'table1_id' => 3,
-            'column1' => 'ha;gyt',
-            'column2' => 462,
-            'column3' => '[NULL] not really',
-            'column4' => '[NULL]'
-        ));
+            'column1'   => 'ha;gyt',
+            'column2'   => 462,
+            'column3'   => '[NULL] not really',
+            'column4'   => '[NULL]'
+        ]);
 
         $this->startingTable = $table;
     }
@@ -62,32 +62,32 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
     public function testFullReplacement()
     {
         $tableMetaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
-            'table1', array('table1_id', 'column1', 'column2', 'column3', 'column4')
+            'table1', ['table1_id', 'column1', 'column2', 'column3', 'column4']
         );
 
         $table = new PHPUnit_Extensions_Database_DataSet_DefaultTable($tableMetaData);
 
-        $table->addRow(array(
+        $table->addRow([
             'table1_id' => 1,
-            'column1' => 'My name is %%%name%%%',
-            'column2' => 200,
-            'column3' => 34.64,
-            'column4' => 'yghkf;a  hahfg8ja h;'
-        ));
-        $table->addRow(array(
+            'column1'   => 'My name is %%%name%%%',
+            'column2'   => 200,
+            'column3'   => 34.64,
+            'column4'   => 'yghkf;a  hahfg8ja h;'
+        ]);
+        $table->addRow([
             'table1_id' => 2,
-            'column1' => 'hk;afg',
-            'column2' => 654,
-            'column3' => 46.54,
-            'column4' => '24rwehhads'
-        ));
-        $table->addRow(array(
+            'column1'   => 'hk;afg',
+            'column2'   => 654,
+            'column3'   => 46.54,
+            'column4'   => '24rwehhads'
+        ]);
+        $table->addRow([
             'table1_id' => 3,
-            'column1' => 'ha;gyt',
-            'column2' => 462,
-            'column3' => '[NULL] not really',
-            'column4' => NULL
-        ));
+            'column1'   => 'ha;gyt',
+            'column2'   => 462,
+            'column3'   => '[NULL] not really',
+            'column4'   => NULL
+        ]);
 
         $actual = new PHPUnit_Extensions_Database_DataSet_ReplacementTable($this->startingTable);
         $actual->addFullReplacement('[NULL]', NULL);
@@ -98,32 +98,32 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
     public function testSubStrReplacement()
     {
         $tableMetaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
-            'table1', array('table1_id', 'column1', 'column2', 'column3', 'column4')
+            'table1', ['table1_id', 'column1', 'column2', 'column3', 'column4']
         );
 
         $table = new PHPUnit_Extensions_Database_DataSet_DefaultTable($tableMetaData);
 
-        $table->addRow(array(
+        $table->addRow([
             'table1_id' => 1,
-            'column1' => 'My name is Mike Lively',
-            'column2' => 200,
-            'column3' => 34.64,
-            'column4' => 'yghkf;a  hahfg8ja h;'
-        ));
-        $table->addRow(array(
+            'column1'   => 'My name is Mike Lively',
+            'column2'   => 200,
+            'column3'   => 34.64,
+            'column4'   => 'yghkf;a  hahfg8ja h;'
+        ]);
+        $table->addRow([
             'table1_id' => 2,
-            'column1' => 'hk;afg',
-            'column2' => 654,
-            'column3' => 46.54,
-            'column4' => '24rwehhads'
-        ));
-        $table->addRow(array(
+            'column1'   => 'hk;afg',
+            'column2'   => 654,
+            'column3'   => 46.54,
+            'column4'   => '24rwehhads'
+        ]);
+        $table->addRow([
             'table1_id' => 3,
-            'column1' => 'ha;gyt',
-            'column2' => 462,
-            'column3' => '[NULL] not really',
-            'column4' => '[NULL]'
-        ));
+            'column1'   => 'ha;gyt',
+            'column2'   => 462,
+            'column3'   => '[NULL] not really',
+            'column4'   => '[NULL]'
+        ]);
 
         $actual = new PHPUnit_Extensions_Database_DataSet_ReplacementTable($this->startingTable);
         $actual->addSubStrReplacement('%%%name%%%', 'Mike Lively');
@@ -134,37 +134,37 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
     public function testConstructorReplacements()
     {
         $tableMetaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
-            'table1', array('table1_id', 'column1', 'column2', 'column3', 'column4')
+            'table1', ['table1_id', 'column1', 'column2', 'column3', 'column4']
         );
 
         $table = new PHPUnit_Extensions_Database_DataSet_DefaultTable($tableMetaData);
 
-        $table->addRow(array(
+        $table->addRow([
             'table1_id' => 1,
-            'column1' => 'My name is Mike Lively',
-            'column2' => 200,
-            'column3' => 34.64,
-            'column4' => 'yghkf;a  hahfg8ja h;'
-        ));
-        $table->addRow(array(
+            'column1'   => 'My name is Mike Lively',
+            'column2'   => 200,
+            'column3'   => 34.64,
+            'column4'   => 'yghkf;a  hahfg8ja h;'
+        ]);
+        $table->addRow([
             'table1_id' => 2,
-            'column1' => 'hk;afg',
-            'column2' => 654,
-            'column3' => 46.54,
-            'column4' => '24rwehhads'
-        ));
-        $table->addRow(array(
+            'column1'   => 'hk;afg',
+            'column2'   => 654,
+            'column3'   => 46.54,
+            'column4'   => '24rwehhads'
+        ]);
+        $table->addRow([
             'table1_id' => 3,
-            'column1' => 'ha;gyt',
-            'column2' => 462,
-            'column3' => '[NULL] not really',
-            'column4' => NULL
-        ));
+            'column1'   => 'ha;gyt',
+            'column2'   => 462,
+            'column3'   => '[NULL] not really',
+            'column4'   => NULL
+        ]);
 
         $actual = new PHPUnit_Extensions_Database_DataSet_ReplacementTable(
             $this->startingTable,
-            array('[NULL]' => NULL),
-            array('%%%name%%%' => 'Mike Lively')
+            ['[NULL]'     => NULL],
+            ['%%%name%%%' => 'Mike Lively']
         );
 
         PHPUnit_Extensions_Database_TestCase::assertTablesEqual($table, $actual);
@@ -174,29 +174,29 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
     {
         $actual = new PHPUnit_Extensions_Database_DataSet_ReplacementTable(
             $this->startingTable,
-            array('[NULL]' => NULL),
-            array('%%%name%%%' => 'Mike Lively')
+            ['[NULL]'     => NULL],
+            ['%%%name%%%' => 'Mike Lively']
         );
 
         $this->assertEquals(
-            array(
+            [
                 'table1_id' => 1,
-                'column1' => 'My name is Mike Lively',
-                'column2' => 200,
-                'column3' => 34.64,
-                'column4' => 'yghkf;a  hahfg8ja h;'
-            ),
+                'column1'   => 'My name is Mike Lively',
+                'column2'   => 200,
+                'column3'   => 34.64,
+                'column4'   => 'yghkf;a  hahfg8ja h;'
+            ],
             $actual->getRow(0)
         );
 
         $this->assertEquals(
-            array(
+            [
                 'table1_id' => 3,
-                'column1' => 'ha;gyt',
-                'column2' => 462,
-                'column3' => '[NULL] not really',
-                'column4' => NULL
-            ),
+                'column1'   => 'ha;gyt',
+                'column2'   => 462,
+                'column3'   => '[NULL] not really',
+                'column4'   => NULL
+            ],
             $actual->getRow(2)
         );
     }
@@ -205,8 +205,8 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
     {
         $actual = new PHPUnit_Extensions_Database_DataSet_ReplacementTable(
             $this->startingTable,
-            array('[NULL]' => NULL),
-            array('%%%name%%%' => 'Mike Lively')
+            ['[NULL]'     => NULL],
+            ['%%%name%%%' => 'Mike Lively']
         );
 
         $this->assertNull($actual->getValue(2, 'column4'));
@@ -260,7 +260,7 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
             ->with($otherMetaData)
             ->will($this->returnValue(true));
 
-        $replacementTable = $this->getMock('PHPUnit_Extensions_Database_DataSet_ReplacementTable', array('getRowCount'), array($table));
+        $replacementTable = $this->getMock('PHPUnit_Extensions_Database_DataSet_ReplacementTable', ['getRowCount'], [$table]);
         $replacementTable->expects($this->once())
             ->method('getRowCount')
             ->will($this->returnValue(1));
@@ -270,7 +270,7 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
     /**
      * @param array $tableColumnValues
      * @param array $otherColumnValues
-     * @param boolean $matches
+     * @param bool  $matches
      * @dataProvider providerMatchesWithColumnValueComparisons
      */
     public function testMatchesWithColumnValueComparisons($tableColumnValues, $otherColumnValues, $matches)
@@ -299,17 +299,17 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
             ->with($otherMetaData)
             ->will($this->returnValue(true));
 
-        $replacementTable = $this->getMock('PHPUnit_Extensions_Database_DataSet_ReplacementTable', array('getRowCount', 'getValue'), array($table));
+        $replacementTable = $this->getMock('PHPUnit_Extensions_Database_DataSet_ReplacementTable', ['getRowCount', 'getValue'], [$table]);
         $replacementTable->expects($this->any())
             ->method('getRowCount')
             ->will($this->returnValue(count($tableColumnValues)));
 
-        $tableMap = array();
-        $otherMap = array();
+        $tableMap = [];
+        $otherMap = [];
         foreach ($tableColumnValues as $rowIndex => $rowData) {
             foreach ($rowData as $columnName => $columnValue) {
-                $tableMap[] = array($rowIndex, $columnName, $columnValue);
-                $otherMap[] = array($rowIndex, $columnName, $otherColumnValues[$rowIndex][$columnName]);
+                $tableMap[] = [$rowIndex, $columnName, $columnValue];
+                $otherMap[] = [$rowIndex, $columnName, $otherColumnValues[$rowIndex][$columnName]];
             }
         }
         $replacementTable->expects($this->any())
@@ -324,148 +324,148 @@ class Extensions_Database_DataSet_ReplacementTableTest extends PHPUnit_Framework
 
     public function providerMatchesWithColumnValueComparisons()
     {
-        return array(
+        return [
 
             // One row, one column, matches
-            array(
-                array(
-                    array('id' => 1),
-                ),
-                array(
-                    array('id' => 1),
-                ),
+            [
+                [
+                    ['id' => 1],
+                ],
+                [
+                    ['id' => 1],
+                ],
                 true,
-            ),
+            ],
 
             // One row, one column, does not match
-            array(
-                array(
-                    array('id' => 1),
-                ),
-                array(
-                    array('id' => 2),
-                ),
+            [
+                [
+                    ['id' => 1],
+                ],
+                [
+                    ['id' => 2],
+                ],
                 false,
-            ),
+            ],
 
             // Multiple rows, one column, matches
-            array(
-                array(
-                    array('id' => 1),
-                    array('id' => 2),
-                ),
-                array(
-                    array('id' => 1),
-                    array('id' => 2),
-                ),
+            [
+                [
+                    ['id' => 1],
+                    ['id' => 2],
+                ],
+                [
+                    ['id' => 1],
+                    ['id' => 2],
+                ],
                 true,
-            ),
+            ],
 
             // Multiple rows, one column, do not match
-            array(
-                array(
-                    array('id' => 1),
-                    array('id' => 2),
-                ),
-                array(
-                    array('id' => 1),
-                    array('id' => 3),
-                ),
+            [
+                [
+                    ['id' => 1],
+                    ['id' => 2],
+                ],
+                [
+                    ['id' => 1],
+                    ['id' => 3],
+                ],
                 false,
-            ),
+            ],
 
             // Multiple rows, multiple columns, matches
-            array(
-                array(
-                    array('id' => 1, 'name' => 'foo'),
-                    array('id' => 2, 'name' => 'bar'),
-                ),
-                array(
-                    array('id' => 1, 'name' => 'foo'),
-                    array('id' => 2, 'name' => 'bar'),
-                ),
+            [
+                [
+                    ['id' => 1, 'name' => 'foo'],
+                    ['id' => 2, 'name' => 'bar'],
+                ],
+                [
+                    ['id' => 1, 'name' => 'foo'],
+                    ['id' => 2, 'name' => 'bar'],
+                ],
                 true,
-            ),
+            ],
 
             // Multiple rows, multiple columns, do not match
-            array(
-                array(
-                    array('id' => 1, 'name' => 'foo'),
-                    array('id' => 2, 'name' => 'bar'),
-                ),
-                array(
-                    array('id' => 1, 'name' => 'foo'),
-                    array('id' => 2, 'name' => 'baz'),
-                ),
+            [
+                [
+                    ['id' => 1, 'name' => 'foo'],
+                    ['id' => 2, 'name' => 'bar'],
+                ],
+                [
+                    ['id' => 1, 'name' => 'foo'],
+                    ['id' => 2, 'name' => 'baz'],
+                ],
                 false,
-            ),
+            ],
 
             // Int and int as string must match
-            array(
-                array(
-                    array('id' => 42),
-                ),
-                array(
-                    array('id' => '42'),
-                ),
+            [
+                [
+                    ['id' => 42],
+                ],
+                [
+                    ['id' => '42'],
+                ],
                 true,
-            ),
+            ],
 
             // Float and float as string must match
-            array(
-                array(
-                    array('id' => 15.3),
-                ),
-                array(
-                    array('id' => '15.3'),
-                ),
+            [
+                [
+                    ['id' => 15.3],
+                ],
+                [
+                    ['id' => '15.3'],
+                ],
                 true,
-            ),
+            ],
 
             // Int and float must match
-            array(
-                array(
-                    array('id' => 18.00),
-                ),
-                array(
-                    array('id' => 18),
-                ),
+            [
+                [
+                    ['id' => 18.00],
+                ],
+                [
+                    ['id' => 18],
+                ],
                 true,
-            ),
+            ],
 
             // 0 and empty string must not match
-            array(
-                array(
-                    array('id' => 0),
-                ),
-                array(
-                    array('id' => ''),
-                ),
+            [
+                [
+                    ['id' => 0],
+                ],
+                [
+                    ['id' => ''],
+                ],
                 false,
-            ),
+            ],
 
             // 0 and null must not match
-            array(
-                array(
-                    array('id' => 0),
-                ),
-                array(
-                    array('id' => null),
-                ),
+            [
+                [
+                    ['id' => 0],
+                ],
+                [
+                    ['id' => null],
+                ],
                 false,
-            ),
+            ],
 
             // empty string and null must not match
-            array(
-                array(
-                    array('id' => ''),
-                ),
-                array(
-                    array('id' => null),
-                ),
+            [
+                [
+                    ['id' => ''],
+                ],
+                [
+                    ['id' => null],
+                ],
                 false,
-            ),
-        );
+            ],
+        ];
     }
 
 }

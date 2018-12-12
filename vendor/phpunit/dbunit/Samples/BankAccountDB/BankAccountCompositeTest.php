@@ -21,7 +21,7 @@ class BankAccountCompositeTest extends PHPUnit_Framework_TestCase
 
     protected $tester;
 
-    public function __construct($name = null, array $data = array(), $dataName = '')
+    public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
 
@@ -36,10 +36,11 @@ class BankAccountCompositeTest extends PHPUnit_Framework_TestCase
     protected function getDatabaseTester()
     {
         $connection = new PHPUnit_Extensions_Database_DB_DefaultDatabaseConnection($this->pdo, 'sqlite');
-        $tester = new PHPUnit_Extensions_Database_DefaultTester($connection);
+        $tester     = new PHPUnit_Extensions_Database_DefaultTester($connection);
         $tester->setSetUpOperation(PHPUnit_Extensions_Database_Operation_Factory::CLEAN_INSERT());
         $tester->setTearDownOperation(PHPUnit_Extensions_Database_Operation_Factory::NONE());
-        $tester->setDataSet(new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__).'/_files/bank-account-seed.xml'));
+        $tester->setDataSet(new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__) . '/_files/bank-account-seed.xml'));
+
         return $tester;
     }
 
@@ -87,7 +88,7 @@ class BankAccountCompositeTest extends PHPUnit_Framework_TestCase
         $bank_account = new BankAccount('12348612357236185', $this->pdo);
         $bank_account->depositMoney(24);
 
-        $xml_dataset = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__).'/_files/bank-account-after-deposits.xml');
+        $xml_dataset = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__) . '/_files/bank-account-after-deposits.xml');
         PHPUnit_Extensions_Database_TestCase::assertDataSetsEqual($xml_dataset, $this->tester->getConnection()->createDataSet());
     }
 
@@ -102,7 +103,7 @@ class BankAccountCompositeTest extends PHPUnit_Framework_TestCase
         $bank_account = new BankAccount('12348612357236185', $this->pdo);
         $bank_account->withdrawMoney(24);
 
-        $xml_dataset = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__).'/_files/bank-account-after-withdrawals.xml');
+        $xml_dataset = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__) . '/_files/bank-account-after-withdrawals.xml');
         PHPUnit_Extensions_Database_TestCase::assertDataSetsEqual($xml_dataset, $this->tester->getConnection()->createDataSet());
     }
 
@@ -110,7 +111,7 @@ class BankAccountCompositeTest extends PHPUnit_Framework_TestCase
     {
         $bank_account = new BankAccount('12345678912345678', $this->pdo);
 
-        $xml_dataset = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__).'/_files/bank-account-after-new-account.xml');
+        $xml_dataset = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__) . '/_files/bank-account-after-new-account.xml');
         PHPUnit_Extensions_Database_TestCase::assertDataSetsEqual($xml_dataset, $this->tester->getConnection()->createDataSet());
     }
 }
